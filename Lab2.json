@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": { 
+    },
+    "functions": [],
+    "variables": {
+        "StorageName": "stormayuresh"
+    },
+    "resources": [
+        {
+            "name": "[concat(variables('StorageName'),copyIndex())]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-04-01",
+            "tags": {
+                "displayName": "storageaccount1"
+            },
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "copy": {
+                  "name" : "Creating 5 storage account",
+                  "count" : 5          
+
+          }
+        }
+    ],
+    "outputs": {}      
+    
+}
